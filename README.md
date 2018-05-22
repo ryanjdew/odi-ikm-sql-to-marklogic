@@ -1,15 +1,13 @@
+
 **WORK IN PROGRESS**
 
-MarkLogic Integration Knowledge Module for ODI Using DMSDK
-=======================
+# MarkLogic Integration Knowledge Module for ODI Using DMSDK
 
-What Is This?
--------------
+## What Is This?
 
 This is an Oracle Data Integrator (ODI) Integration Knowledge Module (IKM) that allows data to be transferred from an ORACLE database to a MarkLogic database using Oracle's ODI and the Data Movement SDK
 
-Technology Versions
--------------------
+### Technology Versions
 
 This was tested against the following technologies:
 
@@ -17,23 +15,19 @@ This was tested against the following technologies:
 - MarkLogic 9.0-5
 - MarkLogic Client API 4.0.4
 
-
-How To Install The IKM
------------------------------------
+## How To Install The IKM
 
 The sample IKM relies on MarkLogic's Java Client API. You can download the library from https://developer.marklogic.com/products/java. After downloading and unzipping, you'll need to copy the following jar files into the __~/.odi/oracledi/userlib__ folder:
 
-- marklogic-client-api-4.0.4.jar
-- okhttp-3.10.0.jar
-- okio-1.14.0.jar 
+* marklogic-client-api-4.0.4.jar
+* okhttp-3.10.0.jar
+* okio-1.14.0.jar 
 
 In order for the library to be found, the ODI Studio will need to be restarted.
 
 At this point, you can import the IKM XML (odi-ikm-sql-to-marklogic-full-export.xml). 
 
-
-How To Run The IKM
--------------------------------
+## How To Run The IKM
 
 1. Create a target Model, with a child target Datastore.
 
