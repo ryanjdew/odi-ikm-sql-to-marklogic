@@ -1,4 +1,4 @@
-from com.marklogic.client import *
+from com.marklogic.client import query
 from java.lang import String
 from jarray import array
 queryManager = client.newQueryManager()

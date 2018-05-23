@@ -8,7 +8,6 @@ from javax.xml.parsers import *
 from javax.xml.transform import *
 from javax.xml.transform.dom import *
 from javax.xml.transform.stream import *
-from com.marklogic.xcc import *
 from com.marklogic.client import *
 from org.w3c.dom import *
 # Open a file for logging
@@ -25,15 +24,20 @@ print >> log, "Created a database connection to <%=odiRef.getOption("ML_HOST")%>
 manager = client.newDataMovementManager();
 # Setup a write batcher to be used to batch process files.
 writer = manager.newWriteBatcher();
-writer = writer.withJobName("IKM Import");
-writer = writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
+writer.withJobName("IKM Import");
+writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
+# TODO: Do something with onBatchFailure and onBatchSuccess listeners
+#class SuccessListener(WriteBatchListener):
+#  def actionPerformed(self, e):
+#    print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'a'), "TEST"
+#successListener = SuccessListener();
+#writer = writer.onBatchSuccess(successListener)
 <% if (odiRef.getOption("FORMAT").equals("XML")) { %>
 # Use a transformer for XML
 tf = TransformerFactory.newInstance()
 transformer = tf.newTransformer()
 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
 <% } %>
-# TODO: Do something with onBatchFailure and onBatchSuccess listeners
 # Start the job to be used while processing files.
 job = manager.startJob(writer);
 docFactory = DocumentBuilderFactory.newInstance()

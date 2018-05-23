@@ -1,5 +1,4 @@
 from java.lang import String
-from com.marklogic.xcc import *
 from com.marklogic.client import *
 from jarray import array
 rowCount = rowCount + 1
@@ -22,7 +21,7 @@ extension = "xml"
 <% } %>
 output = output.encode('utf-8')
 stringHandle = io.StringHandle(output);
-stringHandle = stringHandle.withFormat(fileFormat);
+stringHandle.withFormat(fileFormat);
 collections = io.DocumentMetadataHandle();
-collections = collections.withCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String));
+collections.withCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String));
 writer.add("/<%=odiRef.getTable("ID")%>/" + str(rowCount) + "." + extension, collections, stringHandle);
