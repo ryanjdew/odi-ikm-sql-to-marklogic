@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <SunopsisExport>
 <Admin RepositoryVersion="05.02.02.07" IsLegacyIdCompatible="false" />
-<Encryption algorithm="AES" keyLength="128" exportKeyHash="es8UU8gx+DjRd7NgF1RQIEvILZ/7apEdsTkUOgj/5jY=" keyVect="AMzgxyUS9RkVVlJqt59FgA==" exportKeySalt="cd7ef97b-ddff-4968-84b1-90a9cdf256ad" containsCipherText="false"/>
+<Encryption algorithm="AES" keyLength="128" exportKeyHash="5qAORreWE+Xl/HrW7OyuzrjC3BeZXetNs1fPIqQ4ZaE=" keyVect="Jml3XUMLKEFNaOO4p840fQ==" exportKeySalt="fa95c57a-f3d1-4c0d-825a-4579cd3eb1e5" containsCipherText="false"/>
 <Object class="com.sunopsis.dwg.dbobj.SnpTrt">
 		<Field name="CleanupOnError" type="java.lang.String">null</Field>
 	<Field name="CompType" type="java.lang.String"><![CDATA[DATASTORE]]></Field>
@@ -24,7 +24,7 @@
 	<Field name="IndJrnMethod" type="java.lang.String"><![CDATA[S]]></Field>
 	<Field name="IndSuppSetBased" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IntgType" type="java.lang.String">null</Field>
-	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[245]]></Field>
+	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[311]]></Field>
 	<Field name="IsConcurrent" type="java.lang.String">null</Field>
 	<Field name="IsSeeded" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IBaseCompKm" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
@@ -43,7 +43,7 @@
 	<Field name="KmSrcTechno" type="java.lang.String">null</Field>
 	<Field name="KmTechno" type="java.lang.String">null</Field>
 	<Field name="KmVersion" type="java.lang.String">null</Field>
-	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-05-22 17:34:36.0]]></Field>
+	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-05-23 12:50:57.0]]></Field>
 	<Field name="LastUser" type="java.lang.String"><![CDATA[SUPERVISOR]]></Field>
 	<Field name="LkmType" type="java.lang.String"><![CDATA[N]]></Field>
 	<Field name="LChecksum" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
@@ -174,7 +174,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxt" type="com.sunopsis.sql.DbInt"><![CDATA[2003]]></Field>
 	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[110]]></Field>
 	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[0]]></Field>
- <Field name="Txt" type="java.lang.String"><![CDATA[100]]></Field>
+ <Field name="Txt" type="java.lang.String"><![CDATA[10]]></Field>
 </Object>
 <Object class="com.sunopsis.dwg.dbobj.SnpUserExit">
 		<Field name="ExprITxt" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
@@ -413,7 +413,6 @@ limitations under the License.]]></Field>
 	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[102]]></Field>
 	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[2]]></Field>
  <Field name="Txt" type="java.lang.String"><![CDATA[from java.lang import String
-from com.marklogic.xcc import *
 from com.marklogic.client import *
 from jarray import array
 rowCount = rowCount + 1
@@ -436,10 +435,9 @@ extension = "xml"
 <% } %>
 output = output.encode('utf-8')
 stringHandle = io.StringHandle(output);
-stringHandle = stringHandle.withFormat(fileFormat);
-print >> log, stringHandle
+stringHandle.withFormat(fileFormat);
 collections = io.DocumentMetadataHandle();
-collections = collections.withCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String));
+collections.withCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String));
 writer.add("/<%=odiRef.getTable("ID")%>/" + str(rowCount) + "." + extension, collections, stringHandle);]]></Field>
 </Object>
 <Object class="com.sunopsis.dwg.dbobj.SnpOrigTxt">
@@ -638,7 +636,6 @@ from javax.xml.parsers import *
 from javax.xml.transform import *
 from javax.xml.transform.dom import *
 from javax.xml.transform.stream import *
-from com.marklogic.xcc import *
 from com.marklogic.client import *
 from org.w3c.dom import *
 # Open a file for logging
@@ -655,15 +652,20 @@ print >> log, "Created a database connection to <%=odiRef.getOption("ML_HOST")%>
 manager = client.newDataMovementManager();
 # Setup a write batcher to be used to batch process files.
 writer = manager.newWriteBatcher();
-writer = writer.withJobName("IKM Import");
-writer = writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
+writer.withJobName("IKM Import");
+writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
+# TODO: Do something with onBatchFailure and onBatchSuccess listeners
+#class SuccessListener(WriteBatchListener):
+#  def actionPerformed(self, e):
+#    print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'a'), "TEST"
+#successListener = SuccessListener();
+#writer = writer.onBatchSuccess(successListener)
 <% if (odiRef.getOption("FORMAT").equals("XML")) { %>
 # Use a transformer for XML
 tf = TransformerFactory.newInstance()
 transformer = tf.newTransformer()
 transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
 <% } %>
-# TODO: Do something with onBatchFailure and onBatchSuccess listeners
 # Start the job to be used while processing files.
 job = manager.startJob(writer);
 docFactory = DocumentBuilderFactory.newInstance()
@@ -745,7 +747,7 @@ rowCount = 0]]></Field>
 	<Field name="ITxt" type="com.sunopsis.sql.DbInt"><![CDATA[1998]]></Field>
 	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[102]]></Field>
 	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[2]]></Field>
- <Field name="Txt" type="java.lang.String"><![CDATA[from com.marklogic.client import *
+ <Field name="Txt" type="java.lang.String"><![CDATA[from com.marklogic.client import query
 from java.lang import String
 from jarray import array
 queryManager = client.newQueryManager()
