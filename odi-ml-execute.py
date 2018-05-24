@@ -2,13 +2,11 @@ from java.lang import String
 from com.marklogic.client import *
 from jarray import array
 rowCount = rowCount + 1
-print >> log, "Processing document " + str(rowCount)
 <% if (odiRef.getOption("FORMAT").equals("JSON")) { %>
 output = "{ "
 <%=odiRef.getColList("", "output = output + \u0022\\\u0022[CX_COL_NAME]\\\u0022 : \\\u0022#[CX_COL_NAME]\\\u0022", ",\u0022\n", "\u0022", "(INS and !TRG)")%>
 output = output + "}"
 extension = "json"
-createOptions = ContentCreateOptions.newJsonInstance()
 <% } else { %>
 doc = builder.newDocument()
 results = doc.createElement("<%=odiRef.getOption("XML_ROOT")%>")
