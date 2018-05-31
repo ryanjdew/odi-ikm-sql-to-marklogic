@@ -62,6 +62,8 @@ From the designer tab in ODI Studio:
 Several user defined options are used by the IKM and definable via the map as shown in step 7 above.
 * **FORMAT -** XML/JSON - File format to go into MarkLogic
 * **LOG_FILE -** Local File Path - The path and name of the logfile the IKM should write to.
+* **LOG_SUCCESS -** Yes/No - Logs success timestamp and batch number for each successful batch.
+* **LOG_FAILURE -** Yes/No - Logs failure timestamp and batch number for each failed batch.
 * **BATCH_SIZE -** Number - The number of documents to process in each batch sent to MarkLogic.
 * **ML_HOST -** Host name or IP of the target MarkLogic instance.
 * **ML_PORT -** Port to use for the connection. (This should point to the destination database)

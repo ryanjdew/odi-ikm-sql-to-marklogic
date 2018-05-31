@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <SunopsisExport>
 <Admin RepositoryVersion="05.02.02.07" IsLegacyIdCompatible="false" />
-<Encryption algorithm="AES" keyLength="128" exportKeyHash="rxqNJ3oRIuh8apwuV4sb3cfEk3Zs3w9x4u5MxDMLmCk=" keyVect="Oh7wQaNjz5wkzKFUaGq5TA==" exportKeySalt="9bcd1fe8-48b4-472a-b5bc-c35532e54a48" containsCipherText="false"/>
+<Encryption algorithm="AES" keyLength="128" exportKeyHash="O55zY4rjmLMmFuKjef8b9NRBVjd7iH42sZdfoDL7AIs=" keyVect="HBDpqFtHXSFOlm4l9JlOIA==" exportKeySalt="98f636d8-0fc1-4c00-b6b3-7a4827a82dac" containsCipherText="false"/>
 <Object class="com.sunopsis.dwg.dbobj.SnpTrt">
 		<Field name="CleanupOnError" type="java.lang.String">null</Field>
 	<Field name="CompType" type="java.lang.String"><![CDATA[DATASTORE]]></Field>
@@ -24,7 +24,7 @@
 	<Field name="IndJrnMethod" type="java.lang.String"><![CDATA[S]]></Field>
 	<Field name="IndSuppSetBased" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IntgType" type="java.lang.String">null</Field>
-	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[329]]></Field>
+	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[479]]></Field>
 	<Field name="IsConcurrent" type="java.lang.String">null</Field>
 	<Field name="IsSeeded" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IBaseCompKm" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
@@ -43,7 +43,7 @@
 	<Field name="KmSrcTechno" type="java.lang.String">null</Field>
 	<Field name="KmTechno" type="java.lang.String">null</Field>
 	<Field name="KmVersion" type="java.lang.String">null</Field>
-	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-05-24 15:17:28.0]]></Field>
+	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-05-31 18:17:04.0]]></Field>
 	<Field name="LastUser" type="java.lang.String"><![CDATA[SUPERVISOR]]></Field>
 	<Field name="LkmType" type="java.lang.String"><![CDATA[N]]></Field>
 	<Field name="LChecksum" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
@@ -79,7 +79,7 @@
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[2036]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[485]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[37]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[10]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[12]]></Field>
 	<Field name="ShortValue" type="java.lang.String"><![CDATA[NO]]></Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[IS_HEIRARCHICAL]]></Field>
@@ -113,7 +113,7 @@
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[2037]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[482]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[37]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[11]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[13]]></Field>
 	<Field name="ShortValue" type="java.lang.String"><![CDATA[YES]]></Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[IS_NOCYCLE]]></Field>
@@ -140,7 +140,7 @@
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[483]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[37]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[12]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[14]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[START_WITH]]></Field>
@@ -157,7 +157,7 @@
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[484]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[37]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[13]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[15]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[CONNECT_BY]]></Field>
@@ -247,6 +247,60 @@ limitations under the License.]]></Field>
 <Object class="com.sunopsis.dwg.dbobj.SnpUserExit">
 		<Field name="ExprITxt" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
 	<Field name="ExtVersion" type="java.lang.String">null</Field>
+	<Field name="GlobalId" type="java.lang.String"><![CDATA[151044f3-ede7-40a4-b51d-b0e81fd54f20]]></Field>
+	<Field name="IndChange" type="java.lang.String">null</Field>
+	<Field name="ITrt" type="com.sunopsis.sql.DbInt"><![CDATA[155]]></Field>
+	<Field name="ITxtUeHelp" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[2038]]></Field>
+	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[486]]></Field>
+	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[3]]></Field>
+	<Field name="ShortValue" type="java.lang.String"><![CDATA[No]]></Field>
+	<Field name="Subtypes" type="java.lang.String">null</Field>
+	<Field name="UeName" type="java.lang.String"><![CDATA[LOG_SUCCESS]]></Field>
+	<Field name="UeSdesc" type="java.lang.String">null</Field>
+	<Field name="UeType" type="java.lang.String"><![CDATA[D]]></Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpTxtHeader">
+		<Field name="Enc" type="java.lang.String"><![CDATA[0]]></Field>
+	<Field name="EncKey" type="java.lang.String">null</Field>
+ <Field name="EncKeyVect" type="java.lang.String">null</Field>
+	<Field name="GlobalId" type="java.lang.String"><![CDATA[72c30dc7-6f7f-4f06-87ca-7305b1262ec8]]></Field>
+	<Field name="ITxt" type="com.sunopsis.sql.DbInt"><![CDATA[2038]]></Field>
+	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[110]]></Field>
+	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[0]]></Field>
+ <Field name="Txt" type="java.lang.String"><![CDATA[Yes, No]]></Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpUserExit">
+		<Field name="ExprITxt" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="ExtVersion" type="java.lang.String">null</Field>
+	<Field name="GlobalId" type="java.lang.String"><![CDATA[ccdfdca1-c564-4a6b-a881-f049422f829e]]></Field>
+	<Field name="IndChange" type="java.lang.String">null</Field>
+	<Field name="ITrt" type="com.sunopsis.sql.DbInt"><![CDATA[155]]></Field>
+	<Field name="ITxtUeHelp" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[2039]]></Field>
+	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[487]]></Field>
+	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[4]]></Field>
+	<Field name="ShortValue" type="java.lang.String"><![CDATA[Yes]]></Field>
+	<Field name="Subtypes" type="java.lang.String">null</Field>
+	<Field name="UeName" type="java.lang.String"><![CDATA[LOG_FAILURE]]></Field>
+	<Field name="UeSdesc" type="java.lang.String">null</Field>
+	<Field name="UeType" type="java.lang.String"><![CDATA[D]]></Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpTxtHeader">
+		<Field name="Enc" type="java.lang.String"><![CDATA[0]]></Field>
+	<Field name="EncKey" type="java.lang.String">null</Field>
+ <Field name="EncKeyVect" type="java.lang.String">null</Field>
+	<Field name="GlobalId" type="java.lang.String"><![CDATA[1a69ff06-6bbd-432b-ad63-1b348f1fd58b]]></Field>
+	<Field name="ITxt" type="com.sunopsis.sql.DbInt"><![CDATA[2039]]></Field>
+	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[110]]></Field>
+	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[0]]></Field>
+ <Field name="Txt" type="java.lang.String"><![CDATA[Yes, No]]></Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpUserExit">
+		<Field name="ExprITxt" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
+	<Field name="ExtVersion" type="java.lang.String">null</Field>
 	<Field name="GlobalId" type="java.lang.String"><![CDATA[871c60d3-c570-4c43-bd5e-6d9149c5f580]]></Field>
 	<Field name="IndChange" type="java.lang.String">null</Field>
 	<Field name="ITrt" type="com.sunopsis.sql.DbInt"><![CDATA[155]]></Field>
@@ -254,7 +308,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[2003]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[470]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[3]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[5]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[BATCH_SIZE]]></Field>
@@ -281,7 +335,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1985]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[458]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[4]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[6]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[ML_HOST]]></Field>
@@ -308,7 +362,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1986]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[459]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[5]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[7]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[ML_PORT]]></Field>
@@ -335,7 +389,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1987]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[460]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[6]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[8]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[ML_USER]]></Field>
@@ -362,7 +416,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1988]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[461]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[7]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[9]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[ML_PASSWORD]]></Field>
@@ -389,7 +443,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1992]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[462]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[8]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[10]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[ML_COLLECTION]]></Field>
@@ -416,7 +470,7 @@ limitations under the License.]]></Field>
 	<Field name="ITxtValue" type="com.sunopsis.sql.DbInt"><![CDATA[1993]]></Field>
 	<Field name="IUserExit" type="com.sunopsis.sql.DbInt"><![CDATA[463]]></Field>
 	<Field name="IUserExitGroup" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
-	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[9]]></Field>
+	<Field name="Position" type="com.sunopsis.sql.DbInt"><![CDATA[11]]></Field>
 	<Field name="ShortValue" type="java.lang.String">null</Field>
 	<Field name="Subtypes" type="java.lang.String">null</Field>
 	<Field name="UeName" type="java.lang.String"><![CDATA[XML_ROOT]]></Field>
@@ -745,6 +799,7 @@ from javax.xml.transform import *
 from javax.xml.transform.dom import *
 from javax.xml.transform.stream import *
 from com.marklogic.client import *
+from com.marklogic.client.datamovement import *
 from org.w3c.dom import *
 # Open a file for logging
 print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'w'), strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
@@ -762,12 +817,33 @@ manager = client.newDataMovementManager();
 writer = manager.newWriteBatcher();
 writer.withJobName("IKM Import");
 writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
-# TODO: Do something with onBatchFailure and onBatchSuccess listeners
-#class SuccessListener(WriteBatchListener):
-#  def actionPerformed(self, e):
-#    print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'a'), "TEST"
-#successListener = SuccessListener();
-#writer = writer.onBatchSuccess(successListener)
+
+# Success Listener
+<% if (odiRef.getOption("LOG_SUCCESS").equals("Yes")) { %>
+class successListener(WriteBatchListener):
+  def __init__(self,fn):
+    self.processEvent=fn
+
+@successListener
+def batchSuccess(batch):
+  print >> log, str(batch.getTimestamp().time) + " - SUCCESS (Batch: " + str(batch.getJobBatchNumber()) + ")"
+
+writer.onBatchSuccess(batchSuccess)
+<% } %>
+
+# Failure Listener
+<% if (odiRef.getOption("LOG_FAILURE").equals("Yes")) { %>
+class failListener(WriteFailureListener):
+  def __init__(self,fn):
+    self.processEvent=fn
+
+@failListener
+def batchFail(batch):
+  print >> log, str(batch.getTimestamp().time) + " - FAIL (Batch: " + str(batch.getJobBatchNumber()) + ")"
+
+writer.onBatchFailure(batchFail)
+<% } %>
+
 <% if (odiRef.getOption("FORMAT").equals("XML")) { %>
 # Use a transformer for XML
 tf = TransformerFactory.newInstance()
@@ -858,11 +934,12 @@ rowCount = 0]]></Field>
  <Field name="Txt" type="java.lang.String"><![CDATA[from com.marklogic.client import query
 from java.lang import String
 from jarray import array
+print >> log, "Deleting the documents in the collection: " + str("<%=odiRef.getOption("ML_COLLECTION")%>")
 queryManager = client.newQueryManager()
 deleteQuery = queryManager.newDeleteDefinition()
 deleteQuery.setCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String))
 queryManager.delete(deleteQuery)
-print >> log, "Deleting the documents in the collection: " + str("<%=odiRef.getOption("ML_COLLECTION")%>")]]></Field>
+print >> log, "Starting transfer."]]></Field>
 </Object>
 <Object class="com.sunopsis.dwg.dbobj.SnpLineTrt">
 		<Field name="AlwaysExe" type="java.lang.String"><![CDATA[1]]></Field>
@@ -938,9 +1015,10 @@ print >> log, "Deleting the documents in the collection: " + str("<%=odiRef.getO
 	<Field name="ITxt" type="com.sunopsis.sql.DbInt"><![CDATA[2004]]></Field>
 	<Field name="ITxtOrig" type="com.sunopsis.sql.DbInt"><![CDATA[102]]></Field>
 	<Field name="SqlIndGrp" type="java.lang.String"><![CDATA[2]]></Field>
- <Field name="Txt" type="java.lang.String"><![CDATA[print >> log, "flush and wait..."
+ <Field name="Txt" type="java.lang.String"><![CDATA[print >> log, "Flushing batch queue and waiting..."
 writer.flushAndWait();
-manager.stopJob(job);]]></Field>
+manager.stopJob(job);
+print >> log, "DONE"]]></Field>
 </Object>
 <Object class="com.sunopsis.dwg.dbobj.SnpLineTrtUe">
 		<Field name="GlobalId" type="java.lang.String"><![CDATA[657c9720-4c7d-4d2f-9137-be061168fcbd]]></Field>
@@ -1036,6 +1114,20 @@ manager.stopJob(job);]]></Field>
 <Object class="com.sunopsis.dwg.dbobj.SnpFKXRef">
 		<Field name="RefKey" type="java.lang.String"><![CDATA[SNP_TXTHEADER.2005]]></Field>
 	<Field name="RefObjGlobalId" type="java.lang.String"><![CDATA[e369acfa-6171-428f-b793-131fb695ff7b]]></Field>
+ <Field name="RefObjFQName" type="java.lang.String">null</Field>
+ <Field name="RefObjFQType" type="java.lang.String">null</Field>
+ <Field name="RefObjFQNameLengths" type="java.lang.String">null</Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpFKXRef">
+		<Field name="RefKey" type="java.lang.String"><![CDATA[SNP_TXTHEADER.2038]]></Field>
+	<Field name="RefObjGlobalId" type="java.lang.String"><![CDATA[72c30dc7-6f7f-4f06-87ca-7305b1262ec8]]></Field>
+ <Field name="RefObjFQName" type="java.lang.String">null</Field>
+ <Field name="RefObjFQType" type="java.lang.String">null</Field>
+ <Field name="RefObjFQNameLengths" type="java.lang.String">null</Field>
+</Object>
+<Object class="com.sunopsis.dwg.dbobj.SnpFKXRef">
+		<Field name="RefKey" type="java.lang.String"><![CDATA[SNP_TXTHEADER.2039]]></Field>
+	<Field name="RefObjGlobalId" type="java.lang.String"><![CDATA[1a69ff06-6bbd-432b-ad63-1b348f1fd58b]]></Field>
  <Field name="RefObjFQName" type="java.lang.String">null</Field>
  <Field name="RefObjFQType" type="java.lang.String">null</Field>
  <Field name="RefObjFQNameLengths" type="java.lang.String">null</Field>
@@ -1190,11 +1282,11 @@ manager.stopJob(job);]]></Field>
 	<Field name="LinkDiagNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
 	<Field name="MorigTxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
 	<Field name="MtxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
-	<Field name="OrigTxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[18]]></Field>
-	<Field name="OtherObjectsNb" type="com.sunopsis.sql.DbInt"><![CDATA[29]]></Field>
+	<Field name="OrigTxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[20]]></Field>
+	<Field name="OtherObjectsNb" type="com.sunopsis.sql.DbInt"><![CDATA[31]]></Field>
 	<Field name="PlanAgentNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
 	<Field name="StepNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
-	<Field name="TxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[18]]></Field>
+	<Field name="TxtNb" type="com.sunopsis.sql.DbInt"><![CDATA[20]]></Field>
 	<Field name="UeOrigNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
 	<Field name="UeUsedNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
 	<Field name="VarPlanAgentNb" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
