@@ -9,6 +9,7 @@ from javax.xml.transform import *
 from javax.xml.transform.dom import *
 from javax.xml.transform.stream import *
 from com.marklogic.client import *
+from com.marklogic.client.datamovement import *
 from org.w3c.dom import *
 # Open a file for logging
 print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'w'), strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
@@ -26,12 +27,33 @@ manager = client.newDataMovementManager();
 writer = manager.newWriteBatcher();
 writer.withJobName("IKM Import");
 writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
-# TODO: Do something with onBatchFailure and onBatchSuccess listeners
-#class SuccessListener(WriteBatchListener):
-#  def actionPerformed(self, e):
-#    print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'a'), "TEST"
-#successListener = SuccessListener();
-#writer = writer.onBatchSuccess(successListener)
+
+# Success Listener
+<% if (odiRef.getOption("LOG_SUCCESS").equals("Yes")) { %>
+class successListener(WriteBatchListener):
+  def __init__(self,fn):
+    self.processEvent=fn
+
+@successListener
+def batchSuccess(batch):
+  print >> log, str(batch.getTimestamp().time) + " - SUCCESS (Batch: " + str(batch.getJobBatchNumber()) + ")"
+
+writer.onBatchSuccess(batchSuccess)
+<% } %>
+
+# Failure Listener
+<% if (odiRef.getOption("LOG_FAILURE").equals("Yes")) { %>
+class failListener(WriteFailureListener):
+  def __init__(self,fn):
+    self.processEvent=fn
+
+@failListener
+def batchFail(batch):
+  print >> log, str(batch.getTimestamp().time) + " - FAIL (Batch: " + str(batch.getJobBatchNumber()) + ")"
+
+writer.onBatchFailure(batchFail)
+<% } %>
+
 <% if (odiRef.getOption("FORMAT").equals("XML")) { %>
 # Use a transformer for XML
 tf = TransformerFactory.newInstance()
