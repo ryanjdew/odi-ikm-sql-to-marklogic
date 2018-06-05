@@ -18,6 +18,8 @@ This was tested against the following technologies:
  * User defined XML or JSON file format.
  * User defined collection applied to imported files.
  * Optional Hierarchical query support (see __Hierarchical Data__ in the [IKM Options](#ikm-options) below).
+ * Multiple source rows can be grouped into a single output document.
+ * Optional logging of batch success/failure.
 
 ## How To Install The IKM
 The sample IKM relies on MarkLogic's Java Client API. You can download the library from https://developer.marklogic.com/products/java. After downloading and unzipping, you'll need to copy the following jar files into the __~/.odi/oracledi/userlib__ folder:
@@ -71,6 +73,8 @@ Several user defined options are used by the IKM and definable via the map as sh
 * **ML_PASSWORD -** Password
 * **ML_COLLECTION -** Collection that incoming documents should be added to.
 * **XML_ROOT -** Name of the root XML element to use.
+* **RECORD_IDENTIFIER -** Defines the field used to group multiple rows into a single output JSON record to MarkLogic. In order to properly group the records, the source query must be ordered by the identifier defined here.
+__Note:__ When defined, the **FORMAT** option will be overridden to JSON for the output.
 * **Hierarchical Data**
   * **IS_HEIRARCHICAL -** YES/NO - Toggles logic used for hierarchical queries.
   * **IS_NOCYCLE -** YES/NO - Toggles use of _CONNECT BY_ or _CONNECT BY NOCYCLE_

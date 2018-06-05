@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <SunopsisExport>
 <Admin RepositoryVersion="05.02.02.07" IsLegacyIdCompatible="false" />
-<Encryption algorithm="AES" keyLength="128" exportKeyHash="jabKS86hiaCkVHCAa3OAWuk9Y/yf4oXgwm/VbsfhcjI=" keyVect="oDH7KlbbHgeZ6fl7GmWcNg==" exportKeySalt="078b9503-82b9-46d3-a9a6-bceb4e64ffff" containsCipherText="false"/>
+<Encryption algorithm="AES" keyLength="128" exportKeyHash="7d/YGGv1F8PgpsOYiV4TExw9Wsa+ebjgMkaQMpu9RP8=" keyVect="IWZoSgxyhJgTSQp3dbLNMQ==" exportKeySalt="3b44612d-7b39-481e-a098-10b7639e413f" containsCipherText="false"/>
 <Object class="com.sunopsis.dwg.dbobj.SnpTrt">
 		<Field name="CleanupOnError" type="java.lang.String">null</Field>
 	<Field name="CompType" type="java.lang.String"><![CDATA[DATASTORE]]></Field>
@@ -24,7 +24,7 @@
 	<Field name="IndJrnMethod" type="java.lang.String"><![CDATA[S]]></Field>
 	<Field name="IndSuppSetBased" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IntgType" type="java.lang.String">null</Field>
-	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[571]]></Field>
+	<Field name="IntVersion" type="com.sunopsis.sql.DbInt"><![CDATA[623]]></Field>
 	<Field name="IsConcurrent" type="java.lang.String">null</Field>
 	<Field name="IsSeeded" type="java.lang.String"><![CDATA[0]]></Field>
 	<Field name="IBaseCompKm" type="com.sunopsis.sql.DbInt"><![CDATA[null]]></Field>
@@ -43,7 +43,7 @@
 	<Field name="KmSrcTechno" type="java.lang.String">null</Field>
 	<Field name="KmTechno" type="java.lang.String">null</Field>
 	<Field name="KmVersion" type="java.lang.String">null</Field>
-	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-06-04 19:21:36.0]]></Field>
+	<Field name="LastDate" type="java.sql.Timestamp"><![CDATA[2018-06-05 12:47:37.0]]></Field>
 	<Field name="LastUser" type="java.lang.String"><![CDATA[SUPERVISOR]]></Field>
 	<Field name="LkmType" type="java.lang.String"><![CDATA[N]]></Field>
 	<Field name="LChecksum" type="com.sunopsis.sql.DbInt"><![CDATA[0]]></Field>
@@ -582,39 +582,35 @@ limitations under the License.]]></Field>
 from com.marklogic.client import *
 from jarray import array
 rowCount = rowCount + 1
+newRecordId = ""
 
 # Get the record ID for the current row
-newRecordId = ""
 <%=odiRef.getColList("", "if \u0022[CX_COL_NAME]\u0022 == recordIdentifier: newRecordId = \u0022#[CX_COL_NAME]\u0022", "\n", "", "(INS and !TRG)")%>
 
 # Initialize recordId if this is the first record
 if newRecordId != "" and recordId == "": recordId = newRecordId
 
-# Add the record to the batch writer when a new record ID is encountered
-if recordId != newRecordId:
+# Add the previous record to the batch writer when a new record ID is encountered
+if not multiRow or recordId != newRecordId:
   addToBatch(output)
   # Reset output and the recordId
   output = ""
   recordId = newRecordId
 
-<% if (odiRef.getOption("FORMAT").equals("JSON")) { %>
-if output != "": output = output + ","
-output = output + "{ "
-<%=odiRef.getColList("", "output = output + \u0022\\\u0022[CX_COL_NAME]\\\u0022 : \\\u0022#[CX_COL_NAME]\\\u0022", ",\u0022\n", "\u0022", "(INS and !TRG)")%>
-output = output + "}"
-extension = "json"
-<% } else { %>
-# TODO: Fix XML root for multiple row records.
-doc = builder.newDocument()
-results = doc.createElement("<%=odiRef.getOption("XML_ROOT")%>")
-doc.appendChild(results)
-<%=odiRef.getColList("", "node = doc.createElement(\u0022[CX_COL_NAME]\u0022)\nnode.appendChild(doc.createTextNode(\u0022#[CX_COL_NAME]\u0022))\nresults.appendChild(node)", "\n", "", "(INS and !TRG)")%>
-sw = StringWriter()
-transformer.transform(DOMSource(doc), StreamResult(sw))
-output = output + sw.getBuffer().toString()
-extension = "xml"
-<% } %>
-]]></Field>
+if outputFormat == "JSON":
+  if output != "": 
+    output = output + ","
+  output = output + "{ "
+  <%=odiRef.getColList("", "output = output + \u0022\\\u0022[CX_COL_NAME]\\\u0022 : \\\u0022#[CX_COL_NAME]\\\u0022", ",\u0022\n  ", "\u0022", "(INS and !TRG)")%>
+  output = output + "}"
+else:
+  doc = builder.newDocument()
+  results = doc.createElement("<%=odiRef.getOption("XML_ROOT")%>")
+  doc.appendChild(results)
+  <%=odiRef.getColList("", "node = doc.createElement(\u0022[CX_COL_NAME]\u0022)\n  node.appendChild(doc.createTextNode(\u0022#[CX_COL_NAME]\u0022))\n  results.appendChild(node)", "\n  ", "", "(INS and !TRG)")%>
+  sw = StringWriter()
+  transformer.transform(DOMSource(doc), StreamResult(sw))
+  output = output + sw.getBuffer().toString()]]></Field>
 </Object>
 <Object class="com.sunopsis.dwg.dbobj.SnpOrigTxt">
 		<Field name="GlobalId" type="java.lang.String">null</Field>
@@ -830,23 +826,35 @@ from javax.xml.transform.stream import *
 from com.marklogic.client import *
 from com.marklogic.client.datamovement import *
 from org.w3c.dom import *
+
 # Open a file for logging
 print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'w'), strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 log = open("<%=odiRef.getOption("LOG_FILE")%>", 'a')
-# Determine the file format for incoming documents
+print >> log, "File Format: <%=odiRef.getOption("FORMAT")%>"
+
+# Initialize variables used later
 fileFormat = io.Format.JSON if "<%=odiRef.getOption("FORMAT")%>" == "JSON" else io.Format.XML
-# Set our unique record identifier
+outputFormat = "<%=odiRef.getOption("FORMAT")%>"
 recordId = ""
 recordIdentifier = "<%=odiRef.getOption("RECORD_IDENTIFIER")%>"
-# Initialize our output string
+if recordIdentifier == "": 
+  multiRow = False 
+else: multiRow = True
 output = ""
-print >> log, "File Format: <%=odiRef.getOption("FORMAT")%>"
+
+if multiRow: print >> log, "Multi row support enabled. Records identified by: " + recordIdentifier
+if multiRow and outputFormat == "XML": 
+  outputFormat = "JSON"
+  print >> log, "WARNING: Multi row support enabled but FORMAT option set to XML. This setting will be ignored."
+
 # Create a database connection
 auth = DatabaseClientFactory.DigestAuthContext("<%=odiRef.getOption("ML_USER")%>","<%=odiRef.getOption("ML_PASSWORD")%>");
 client = DatabaseClientFactory.newClient("<%=odiRef.getOption("ML_HOST")%>", int("<%=odiRef.getOption("ML_PORT")%>"), auth);
 print >> log, "Created a database connection to <%=odiRef.getOption("ML_HOST")%>:<%=odiRef.getOption("ML_PORT")%> with user: <%=odiRef.getOption("ML_USER")%>."
+
 # Use DataMovementManager
 manager = client.newDataMovementManager();
+
 # Setup a write batcher to be used to batch process files.
 writer = manager.newWriteBatcher();
 writer.withJobName("IKM Import");
@@ -857,11 +865,9 @@ writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
 class successListener(WriteBatchListener):
   def __init__(self,fn):
     self.processEvent=fn
-
 @successListener
 def batchSuccess(batch):
   print >> log, str(batch.getTimestamp().time) + " - SUCCESS (Batch: " + str(batch.getJobBatchNumber()) + ")"
-
 writer.onBatchSuccess(batchSuccess)
 <% } %>
 
@@ -870,20 +876,18 @@ writer.onBatchSuccess(batchSuccess)
 class failListener(WriteFailureListener):
   def __init__(self,fn):
     self.processEvent=fn
-
 @failListener
 def batchFail(batch):
   print >> log, str(batch.getTimestamp().time) + " - FAIL (Batch: " + str(batch.getJobBatchNumber()) + ")"
-
 writer.onBatchFailure(batchFail)
 <% } %>
 
-<% if (odiRef.getOption("FORMAT").equals("XML")) { %>
 # Use a transformer for XML
-tf = TransformerFactory.newInstance()
-transformer = tf.newTransformer()
-transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
-<% } %>
+if outputFormat == "XML":
+  tf = TransformerFactory.newInstance()
+  transformer = tf.newTransformer()
+  transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes")
+
 # Start the job to be used while processing files.
 job = manager.startJob(writer);
 docFactory = DocumentBuilderFactory.newInstance()
@@ -891,10 +895,13 @@ builder = docFactory.newDocumentBuilder()
 
 rowCount = 0
 
+# Function to add the output as a file to the batch writer
 def addToBatch(output):
-  <% if (odiRef.getOption("FORMAT").equals("JSON")) { %>
-  output = "[" + output + "]"
-  <% } %>
+  if outputFormat == "JSON":
+    extension = "json"
+    if multiRow: output = "[" + output + "]"
+  else:
+    extension = "xml"
   output = output.encode('utf-8')
   stringHandle = io.StringHandle(output);
   stringHandle.withFormat(fileFormat);
