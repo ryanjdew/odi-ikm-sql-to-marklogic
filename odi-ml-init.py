@@ -16,6 +16,11 @@ print >> open("<%=odiRef.getOption("LOG_FILE")%>", 'w'), strftime("%a, %d %b %Y 
 log = open("<%=odiRef.getOption("LOG_FILE")%>", 'a')
 # Determine the file format for incoming documents
 fileFormat = io.Format.JSON if "<%=odiRef.getOption("FORMAT")%>" == "JSON" else io.Format.XML
+# Set our unique record identifier
+recordId = ""
+recordIdentifier = "<%=odiRef.getOption("RECORD_IDENTIFIER")%>"
+# Initialize our output string
+output = ""
 print >> log, "File Format: <%=odiRef.getOption("FORMAT")%>"
 # Create a database connection
 auth = DatabaseClientFactory.DigestAuthContext("<%=odiRef.getOption("ML_USER")%>","<%=odiRef.getOption("ML_PASSWORD")%>");
@@ -66,3 +71,14 @@ docFactory = DocumentBuilderFactory.newInstance()
 builder = docFactory.newDocumentBuilder()
 
 rowCount = 0
+
+def addToBatch(output):
+  <% if (odiRef.getOption("FORMAT").equals("JSON")) { %>
+  output = "[" + output + "]"
+  <% } %>
+  output = output.encode('utf-8')
+  stringHandle = io.StringHandle(output);
+  stringHandle.withFormat(fileFormat);
+  collections = io.DocumentMetadataHandle();
+  collections.withCollections(array(["<%=odiRef.getOption("ML_COLLECTION")%>"], String));
+  writer.add("/<%=odiRef.getTable("ID")%>/" + str(rowCount) + "." + extension, collections, stringHandle);
