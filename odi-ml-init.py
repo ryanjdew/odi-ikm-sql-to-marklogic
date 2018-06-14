@@ -20,6 +20,7 @@ print >> log, "File Format: <%=odiRef.getOption("FORMAT")%>"
 # Initialize variables used later
 fileFormat = io.Format.JSON if "<%=odiRef.getOption("FORMAT")%>" == "JSON" else io.Format.XML
 outputFormat = "<%=odiRef.getOption("FORMAT")%>"
+transform = "<%=odiRef.getOption("TRANSFORM")%>"
 recordId = ""
 recordIdentifier = "<%=odiRef.getOption("RECORD_IDENTIFIER")%>"
 if recordIdentifier == "": 
@@ -44,6 +45,11 @@ manager = client.newDataMovementManager();
 writer = manager.newWriteBatcher();
 writer.withJobName("IKM Import");
 writer.withBatchSize(int("<%=odiRef.getOption("BATCH_SIZE")%>"));
+
+# Use a transformation if one is provided
+if transform != "":
+  tran = document.ServerTransform(transform)
+  writer.withTransform(tran)
 
 # Success Listener
 <% if (odiRef.getOption("LOG_SUCCESS").equals("Yes")) { %>
